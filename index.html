@@ -1,13 +1,165 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Prayer Timing App</title>
     <link rel="stylesheet" href="./style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
+
 <body>
     
+    <!-- Navbar Start -->
+    <header class="text-gray-400 bg-gray-900 body-font" id="search-bar">
+        <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
+            <a href="./index.html" target="_blank"
+                class="flex title-font font-medium items-center text-white mb-4 md:mb-0">
+                <svg xmlns="http://www.w3.org/2000/svg" width="3em" height="3em" viewBox="0 0 48 48">
+                    <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                        d="M34.5 5.5h-21c-4.4 0-8 3.6-8 8v21c0 4.4 3.6 8 8 8h21c4.4 0 8-3.6 8-8v-21c0-4.4-3.6-8-8-8" />
+                    <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                        d="M15.333 37C12.95 37 11 36.056 11 33.673V14c0-1.65 1.35-3 3-3h20c1.65 0 3 1.35 3 3v18.667A4.346 4.346 0 0 1 32.667 37v-1.526c-1.214-1.005-1.693-1.21-1.693-1.21s1.524-1.23 1.898-1.756c.816-1.15 2.863-6.045-1.469-9.095c-1.552-1.093-6.31-3.317-6.31-3.317c-1.036-2.482-1.128-3.545-1.093-6.172c.035 2.627-.057 3.69-1.094 6.172c0 0-4.756 2.224-6.309 3.317c-4.332 3.05-2.285 7.945-1.469 9.095c.374.527 1.898 1.756 1.898 1.756s-.479.205-1.692 1.21z" />
+                </svg>
+                <span class="ml-3 text-xl">Prayer Time</span>
+            </a>
+            <form class="w-full max-w-md mx-auto">
+                <label for="default-search"
+                    class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
+                <div class="relative">
+                    <div class="absolute inset-y-0 start-0 flex items-center ps-2 pointer-events-none">
+                        <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
+                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
+                        </svg>
+                    </div>
+                    <input type="search" id="default-search city-search"
+                        class="block w-full p-3 ps-8 text-lg text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        placeholder="Enter City Name" required />
+                </div>
+            </form>
+            <button id="submit-city"
+                class="inline-flex items-center text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg mt-4 md:mt-0"
+                type="submit">Submit
+            </button>
+        </div>
+    </header>
+    <!-- Navbar End -->
+
+    <!-- Content Section Start -->
+    <section class="text-gray-400 bg-gray-900 body-font">
+        <div class="container px-5 py-24 mx-auto">
+            <div class="text-center mb-10">
+                <h1 class="sm:text-3xl text-2xl font-medium text-center title-font text-white mb-4" id="city-name">
+                    Karachi Prayer Timing</h1>
+            </div>
+            <div class="flex flex-wrap lg:w-4/5 sm:mx-auto sm:mb-2 -mx-2">
+                <div class="p-2 sm:w-1/2 w-full">
+                    <div class="bg-gray-800 rounded flex p-4 h-full items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="2.5em" height="2.5em" viewBox="0 0 48 48">
+                            <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                d="M34.5 5.5h-21c-4.4 0-8 3.6-8 8v21c0 4.4 3.6 8 8 8h21c4.4 0 8-3.6 8-8v-21c0-4.4-3.6-8-8-8" />
+                            <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                d="M15.333 37C12.95 37 11 36.056 11 33.673V14c0-1.65 1.35-3 3-3h20c1.65 0 3 1.35 3 3v18.667A4.346 4.346 0 0 1 32.667 37v-1.526c-1.214-1.005-1.693-1.21-1.693-1.21s1.524-1.23 1.898-1.756c.816-1.15 2.863-6.045-1.469-9.095c-1.552-1.093-6.31-3.317-6.31-3.317c-1.036-2.482-1.128-3.545-1.093-6.172c.035 2.627-.057 3.69-1.094 6.172c0 0-4.756 2.224-6.309 3.317c-4.332 3.05-2.285 7.945-1.469 9.095c.374.527 1.898 1.756 1.898 1.756s-.479.205-1.692 1.21z" />
+                        </svg>
+                        <span class="title-font font-medium text-white p-2">Fajr</span>
+                        <span class="title-font font-medium text-white p-2">||</span>
+                        <span class="title-font font-medium text-white p-2" id="fajar-time">04:43</span>
+                    </div>
+                </div>
+                <div class="p-2 sm:w-1/2 w-full">
+                    <div class="bg-gray-800 rounded flex p-4 h-full items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="2.5em" height="2.5em" viewBox="0 0 48 48">
+                            <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                d="M34.5 5.5h-21c-4.4 0-8 3.6-8 8v21c0 4.4 3.6 8 8 8h21c4.4 0 8-3.6 8-8v-21c0-4.4-3.6-8-8-8" />
+                            <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                d="M15.333 37C12.95 37 11 36.056 11 33.673V14c0-1.65 1.35-3 3-3h20c1.65 0 3 1.35 3 3v18.667A4.346 4.346 0 0 1 32.667 37v-1.526c-1.214-1.005-1.693-1.21-1.693-1.21s1.524-1.23 1.898-1.756c.816-1.15 2.863-6.045-1.469-9.095c-1.552-1.093-6.31-3.317-6.31-3.317c-1.036-2.482-1.128-3.545-1.093-6.172c.035 2.627-.057 3.69-1.094 6.172c0 0-4.756 2.224-6.309 3.317c-4.332 3.05-2.285 7.945-1.469 9.095c.374.527 1.898 1.756 1.898 1.756s-.479.205-1.692 1.21z" />
+                        </svg>
+                        <span class="title-font font-medium text-white p-2">Sunrise</span>
+                        <span class="title-font font-medium text-white p-2">||</span>
+                        <span class="title-font font-medium text-white p-2" id="sunrise-time">06:03</span>
+                    </div>
+                </div>
+                <div class="p-2 sm:w-1/2 w-full">
+                    <div class="bg-gray-800 rounded flex p-4 h-full items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="2.5em" height="2.5em" viewBox="0 0 48 48">
+                            <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                d="M34.5 5.5h-21c-4.4 0-8 3.6-8 8v21c0 4.4 3.6 8 8 8h21c4.4 0 8-3.6 8-8v-21c0-4.4-3.6-8-8-8" />
+                            <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                d="M15.333 37C12.95 37 11 36.056 11 33.673V14c0-1.65 1.35-3 3-3h20c1.65 0 3 1.35 3 3v18.667A4.346 4.346 0 0 1 32.667 37v-1.526c-1.214-1.005-1.693-1.21-1.693-1.21s1.524-1.23 1.898-1.756c.816-1.15 2.863-6.045-1.469-9.095c-1.552-1.093-6.31-3.317-6.31-3.317c-1.036-2.482-1.128-3.545-1.093-6.172c.035 2.627-.057 3.69-1.094 6.172c0 0-4.756 2.224-6.309 3.317c-4.332 3.05-2.285 7.945-1.469 9.095c.374.527 1.898 1.756 1.898 1.756s-.479.205-1.692 1.21z" />
+                        </svg>
+                        <span class="title-font font-medium text-white p-2">Dhuhr</span>
+                        <span class="title-font font-medium text-white p-2">||</span>
+                        <span class="title-font font-medium text-white p-2" id="dhuhr-time">12:30</span>
+                    </div>
+                </div>
+                <div class="p-2 sm:w-1/2 w-full">
+                    <div class="bg-gray-800 rounded flex p-4 h-full items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="2.5em" height="2.5em" viewBox="0 0 48 48">
+                            <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                d="M34.5 5.5h-21c-4.4 0-8 3.6-8 8v21c0 4.4 3.6 8 8 8h21c4.4 0 8-3.6 8-8v-21c0-4.4-3.6-8-8-8" />
+                            <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                d="M15.333 37C12.95 37 11 36.056 11 33.673V14c0-1.65 1.35-3 3-3h20c1.65 0 3 1.35 3 3v18.667A4.346 4.346 0 0 1 32.667 37v-1.526c-1.214-1.005-1.693-1.21-1.693-1.21s1.524-1.23 1.898-1.756c.816-1.15 2.863-6.045-1.469-9.095c-1.552-1.093-6.31-3.317-6.31-3.317c-1.036-2.482-1.128-3.545-1.093-6.172c.035 2.627-.057 3.69-1.094 6.172c0 0-4.756 2.224-6.309 3.317c-4.332 3.05-2.285 7.945-1.469 9.095c.374.527 1.898 1.756 1.898 1.756s-.479.205-1.692 1.21z" />
+                        </svg>
+                        <span class="title-font font-medium text-white p-2">Asr</span>
+                        <span class="title-font font-medium text-white p-2">||</span>
+                        <span class="title-font font-medium text-white p-2" id="asr-time">15:58</span>
+                    </div>
+                </div>
+                <div class="p-2 sm:w-1/2 w-full">
+                    <div class="bg-gray-800 rounded flex p-4 h-full items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="2.5em" height="2.5em" viewBox="0 0 48 48">
+                            <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                d="M34.5 5.5h-21c-4.4 0-8 3.6-8 8v21c0 4.4 3.6 8 8 8h21c4.4 0 8-3.6 8-8v-21c0-4.4-3.6-8-8-8" />
+                            <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                d="M15.333 37C12.95 37 11 36.056 11 33.673V14c0-1.65 1.35-3 3-3h20c1.65 0 3 1.35 3 3v18.667A4.346 4.346 0 0 1 32.667 37v-1.526c-1.214-1.005-1.693-1.21-1.693-1.21s1.524-1.23 1.898-1.756c.816-1.15 2.863-6.045-1.469-9.095c-1.552-1.093-6.31-3.317-6.31-3.317c-1.036-2.482-1.128-3.545-1.093-6.172c.035 2.627-.057 3.69-1.094 6.172c0 0-4.756 2.224-6.309 3.317c-4.332 3.05-2.285 7.945-1.469 9.095c.374.527 1.898 1.756 1.898 1.756s-.479.205-1.692 1.21z" />
+                        </svg>
+                        <span class="title-font font-medium text-white p-2">Maghrib</span>
+                        <span class="title-font font-medium text-white p-2">||</span>
+                        <span class="title-font font-medium text-white p-2" id="maghrib-time"> 18:57</span>
+                    </div>
+                </div>
+                <div class="p-2 sm:w-1/2 w-full">
+                    <div class="bg-gray-800 rounded flex p-4 h-full items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="2.5em" height="2.5em" viewBox="0 0 48 48">
+                            <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                d="M34.5 5.5h-21c-4.4 0-8 3.6-8 8v21c0 4.4 3.6 8 8 8h21c4.4 0 8-3.6 8-8v-21c0-4.4-3.6-8-8-8" />
+                            <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                d="M15.333 37C12.95 37 11 36.056 11 33.673V14c0-1.65 1.35-3 3-3h20c1.65 0 3 1.35 3 3v18.667A4.346 4.346 0 0 1 32.667 37v-1.526c-1.214-1.005-1.693-1.21-1.693-1.21s1.524-1.23 1.898-1.756c.816-1.15 2.863-6.045-1.469-9.095c-1.552-1.093-6.31-3.317-6.31-3.317c-1.036-2.482-1.128-3.545-1.093-6.172c.035 2.627-.057 3.69-1.094 6.172c0 0-4.756 2.224-6.309 3.317c-4.332 3.05-2.285 7.945-1.469 9.095c.374.527 1.898 1.756 1.898 1.756s-.479.205-1.692 1.21z" />
+                        </svg>
+                        <span class="title-font font-medium text-white p-2">Isha</span>
+                        <span class="title-font font-medium text-white p-2">||</span>
+                        <span class="title-font font-medium text-white p-2" id="isha-time">20:18</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Content Section Start -->
+
+    <!-- Footer Start -->
+    <footer class="text-gray-400 bg-gray-900 body-font">
+        <div class="container px-5 py-8 mx-auto flex items-center sm:flex-row flex-col">
+            <a href="#search-bar"
+                class="flex title-font font-medium items-center md:justify-start justify-center text-white">
+                <svg xmlns="http://www.w3.org/2000/svg" width="3em" height="3em" viewBox="0 0 48 48">
+                    <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                        d="M34.5 5.5h-21c-4.4 0-8 3.6-8 8v21c0 4.4 3.6 8 8 8h21c4.4 0 8-3.6 8-8v-21c0-4.4-3.6-8-8-8" />
+                    <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                        d="M15.333 37C12.95 37 11 36.056 11 33.673V14c0-1.65 1.35-3 3-3h20c1.65 0 3 1.35 3 3v18.667A4.346 4.346 0 0 1 32.667 37v-1.526c-1.214-1.005-1.693-1.21-1.693-1.21s1.524-1.23 1.898-1.756c.816-1.15 2.863-6.045-1.469-9.095c-1.552-1.093-6.31-3.317-6.31-3.317c-1.036-2.482-1.128-3.545-1.093-6.172c.035 2.627-.057 3.69-1.094 6.172c0 0-4.756 2.224-6.309 3.317c-4.332 3.05-2.285 7.945-1.469 9.095c.374.527 1.898 1.756 1.898 1.756s-.479.205-1.692 1.21z" />
+                </svg>
+                <span class="ml-3 text-xl">Prayer Time</span>
+            </a>
+            <p class="text-sm text-gray-400 sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-800 sm:py-2 sm:mt-0 mt-4">©
+                2024 Prayer Time —
+                <a href="https://www.linkedin.com/in/mirzaabdullahbaig0/" class="text-gray-500 ml-1" target="_blank"
+                    rel="noopener noreferrer">@Mirza Abdullah Baig </a>
+            </p>
+        </div>
+    </footer>
+    <!-- Footer End -->
 
 
     <script src="./app.js"></script>
