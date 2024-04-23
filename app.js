@@ -10,12 +10,31 @@ const isha_time = document.getElementById("isha-time");
 
 let currentDate = new Date();
 
-async function checkName(city_search) {
-  const url = `https://api.aladhan.com/v1/timingsByAddress/${currentDate}?address=${city_search}`;
-  const city_data = await fetch(`${url}`).then((response) => response.json());
-  console.log (city_data);
+async function checkName(city) {
+    const url = `https://api.aladhan.com/v1/timingsByAddress/${currentDate}?address=${city}`;
+    const city_data = fetch(url)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            // Display city name
+            city_name.textContent = data.data.meta.timezone;
+            // Display prayer times
+            fajar_time.textContent = data.data.timings.Fajr;
+            sunrise_time.textContent = data.data.timings.Sunrise;
+            dhuhr_time.textContent = data.data.timings.Dhuhr;
+            asr_time.textContent = data.data.timings.Asr;
+            maghrib_time.textContent = data.data.timings.Maghrib;
+            isha_time.textContent = data.data.timings.Isha;
+        })
+        .catch(error => {
+            console.error('There was a problem with the fetch operation:', error);
+        });
 }
 
-submit_city.addEventListener(`click`, () => {
-  checkName(city_search.value);
+submit_city.addEventListener('click', () => {
+    checkName(city_search.value);
 });
